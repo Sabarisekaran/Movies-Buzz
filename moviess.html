@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies Buzz - Recent Movies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #f3e0c7;
+            background-color: #2c2b2b;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #2c2b2b;
+            padding: 15px;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffa500;
+            font-weight: 600;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ffa500;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #3d3d3d;
+            margin: 10px;
+            width: 18rem;
+            border: none;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-img-top {
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            color: #e6a306e8;
+            text-align: center;
+        }
+
+        .btn-warning {
+            background-color: #ffa500;
+            border: none;
+            color: #2c2b2b;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-warning:hover {
+            background-color: #ffcc33;
+        }
+
+        footer {
+            background-color: #2c2b2b;
+            color: #f3e0c7;
+            text-align: center;
+            padding: 15px;
+        }
+        #BigilMovieDetails, #MersalMovieDetails {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Movies Buzz</a>
+    </nav>
+
+    <!-- Recent Movies Section -->
+<section id="recentMovies" class="container mt-5">
+    <h2>Recent Movies</h2>
+    <div class="d-flex flex-nowrap overflow-auto mb-4">
+        <div class="card mr-3" style="min-width: 250px;">
+            <img src="D:/movies Buzz/img/Bigil.jpg" class="card-img-top" alt="Bigil Poster" onclick="showDetails('Bigil')">
+            <div class="card-body">
+                <h5 class="card-title">Bigil</h5>
+                <p class="card-text">An inspiring sports drama with action-packed sequences.</p>
+                <button onclick="showDetails('Bigil')" class="btn btn-warning">View Details</button>
+            </div>
+        </div>
+        <div class="card mr-3" style="min-width: 250px;">
+            <img src="D:/movies Buzz/img/Mersal.jpg" class="card-img-top" alt="Mersal Poster" onclick="showDetails('Mersal')">
+            <div class="card-body">
+                <h5 class="card-title">Mersal</h5>
+                <p class="card-text">A thrilling story of magic, action, and drama.</p>
+                <button onclick="showDetails('Mersal')" class="btn btn-warning">View Details</button>
+            </div>
+        </div>
+        <div class="card mr-3" style="min-width: 250px;">
+            <img src="D:/movies Buzz/img/Jawan.jpg" class="card-img-top" alt="Jawan Poster" onclick="showDetails('Jawan')">
+            <div class="card-body">
+                <h5 class="card-title">Jawan</h5>
+                <p class="card-text">A thriller army man story to save his Nation from corporate.</p>
+                <button onclick="showDetails('Jawan')" class="btn btn-warning">View Details</button>
+            </div>
+        </div>
+        <div class="card" style="min-width: 250px;">
+            <img src="D:/movies Buzz/img/2.0.jpg" class="card-img-top" alt="2.0 Poster" onclick="showDetails('2.0')">
+            <div class="card-body">
+                <h5 class="card-title">2.0</h5>
+                <p class="card-text">A sci-fi movie with thriller and action genres.</p>
+                <button onclick="showDetails('2.0')" class="btn btn-warning">View Details</button>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-nowrap overflow-auto">
+        <div class="card mr-3" style="min-width: 250px;">
+            <img src="D:\movies Buzz\img\Master.jpg" class="card-img-top" alt="Master Poster" onclick="showDetails('Master')">
+            <div class="card-body">
+                <h5 class="card-title">Master</h5>
+                <p class="card-text">An action-packed story of a teacher facing off against a criminal.</p>
+                <button onclick="showDetails('Master')" class="btn btn-warning">View Details</button>
+            </div>
+        </div>
+        <div class="card mr-3" style="min-width: 250px;">
+            <img src="D:\movies Buzz\img\Kaithi.jpg" class="card-img-top" alt="Kaithi Poster" onclick="showDetails('Kaithi')">
+            <div class="card-body">
+                <h5 class="card-title">Kaithi</h5>
+                <p class="card-text">A gripping story of a prisoner trying to save lives.</p>
+                <button onclick="showDetails('Kaithi')" class="btn btn-warning">View Details</button>
+            </div>
+        </div>
+        <div class="card mr-3" style="min-width: 250px;">
+            <img src="D:\movies Buzz\img\Vikram.jpg" class="card-img-top" alt="Vikram Poster" onclick="showDetails('Vikram')">
+            <div class="card-body">
+                <h5 class="card-title">Vikram</h5>
+                <p class="card-text">A thrilling action movie with intense sequences.</p>
+                <button onclick="showDetails('Vikram')" class="btn btn-warning">View Details</button>
+            </div>
+        </div>
+        <div class="card" style="min-width: 250px;">
+            <img src="D:/movies Buzz/img/Petta.jpg" class="card-img-top" alt="Petta Poster" onclick="showDetails('Petta')">
+            <div class="card-body">
+                <h5 class="card-title">Petta</h5>
+                <p class="card-text">An entertaining story with action, drama, and nostalgia.</p>
+                <button onclick="showDetails('Petta')" class="btn btn-warning">View Details</button>
+            </div>
+        </div>
+    </div>
+</section>
+ <section id="BigilMovieDetails" style="display: none;">
+    <div class="container">
+        <button class="btn btn-warning" onclick="goBack()">Back</button>
+        <div class="row mt-5">
+           <div class="card" style="width: 100%; display: flex;">
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <img src="D:/movies Buzz/img/Bigil.jpg" alt="Movie Poster" class="img-fluid">
+                
+                
+            
+<div class="col-md-6 d-flex align-items-center">
+    <div>
+        <h5 class="card-title-2">Bigil</h5>
+        <p class="card-text-2">Bigil is fantastic action and fantasy orianted film</p>
+    </div>
+</div>
+</div>
+                 <div class="col-md-6">
+                <h2 id="movieTitle">Bigil</h2>
+                <p id="movieReview">Bigil is a sports drama with action-packed sequences.</p>
+                <h6 class="text-center text-warning">Trailer</h6>
+                <div id="carouselTrailer" class="carousel slide mb-3" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/GR-Ui8-V2M0?si=mhrG84geCEhSxy1q&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselTrailer" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselTrailer" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <h6 class="text-center text-warning">Songs</h6>
+                <div id="carouselSongs" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/MnbWE8ZKeBg?si=82XMPXS-8sJKBIAt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="carousel-item ">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/zsFYtBwtHCE?si=ZpuWAsa3LOpUTeAi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselSongs" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselSongs" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<section id="MersalMovieDetails" style="display: none;">
+    <div class="container">
+        <button class="btn btn-warning my-3" onclick="goBack()">Back</button>
+        <div class="row mt-5">
+            <div class="card" style="width: 100%; display: flex;">
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <img src="D:/movies Buzz/img/Mersal-2.jpg" alt="Movie Poster" class="img-fluid">
+                  
+                    <div class="col-md-6 d-flex align-items-center">
+                        <div>
+                            <h5 class="card-title-2">Mersal</h5>
+                            <p class="card-text-2">Mersal is a social and emotional action thriller film.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h2 id="movieTitle">Mersal</h2>
+                    <p id="movieReview">Mersal is a thrilling story full of magic, action, and drama.</p>
+
+                    <h6 class="text-center text-warning">Trailer</h6>
+                    <div id="carouselTrailerMersal" class="carousel slide mb-3" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/gQDo5QuZTaw?si=78SZKNn_CQC1guxJ" title="Trailer 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-item">
+                                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/other-trailer-link" title="Trailer 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselTrailerMersal" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselTrailerMersal" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+
+                    <h6 class="text-center text-warning">Songs</h6>
+                    <div id="carouselSongsMersal" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/3XmrZaVVUpc?si=Gad4ix1-ySr7vp4b&controls=0" title="Song 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-item">
+                                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/another-song-link" title="Song 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselSongsMersal" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselSongsMersal" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="JawanMovieDetails" style="display: none;">
+    <div class="container">
+        <button class="btn btn-warning my-3" onclick="goBack()">Back</button>
+        <div class="row mt-5">
+            <div class="card" style="width: 100%; display: flex;">
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <img src="D:/movies Buzz/img/Jawan.jpg" alt="Movie Poster" class="img-fluid">
+                    
+                    <div class="col-md-6 d-flex align-items-center">
+                        <div>
+                            <h5 class="card-title-2">Jawan</h5>
+                            <p class="card-text-2">Jawan is a fantasy and emotional action film.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h2 id="movieTitle">Jawan</h2>
+                    <p id="movieReview">"Jawan" is about a vigilante seeking justice for his family's wrongdoings.</p>
+
+                    <h6 class="text-center text-warning">Trailer</h6>
+                    <div id="carouselTrailerJawan" class="carousel slide mb-3" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Ua1jWmGNw9g?si=gQFNElrZ1kWZiuYn&amp;controls=0" title="Trailer 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-item">
+                                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/another-trailer-link" title="Trailer 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselTrailerJawan" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselTrailerJawan" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="2.0MovieDetails" style="display: none;">
+    <div class="container">
+        <button class="btn btn-warning my-3" onclick="goBack()">Back</button>
+        <div class="row mt-5">
+            <div class="card" style="width: 100%; display: flex;">
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <img src="D:/movies Buzz/img/2.0.jpg" alt="Movie Poster" class="img-fluid">
+                    
+                    <div class="col-md-6 d-flex align-items-center">
+                        <div>
+                            <h5 class="card-title-2">2.0</h5>
+                            <p class="card-text-2">A sci-fi movie with thriller and action genres featuring realistic 3D VFX.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h2 id="movieTitle">2.0</h2>
+                    <p id="movieReview">Robot returns, fights a destructive force, saves humanity from extinction.</p>
+
+                    <h6 class="text-center text-warning">Trailer</h6>
+                    <div id="carouselTrailer2point0" class="carousel slide mb-3" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/jrETX2eDhL8?si=VvjAC9nLuWtPRnyX" title="Trailer 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-item">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/7cx-KSsYcjg?si=PloTijgz1m9EhU-c" title="Trailer 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselTrailer2point0" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselTrailer2point0" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <h6 class="text-center text-warning">Songs</h6>
+                    <div id="carouselSongs2point0" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/fChxPoKGPI0?si=aP5eQWOUkognXOoQ" title="Song 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-item">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/E0E-ftZ9kYY?si=1xQB18HpOAg8vhdL" title="Song 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselSongs2point0" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselSongs2point0" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="MasterMovieDetails" style="display: none;">
+    <div class="container">
+        <button class="btn btn-warning my-3" onclick="goBack()">Back</button>
+        <div class="row mt-5">
+            <div class="card" style="width: 100%; display: flex;">
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <img src="D:/movies Buzz/img/Master.jpg" alt="Movie Poster" class="img-fluid">
+                    
+                    <div class="col-md-6 d-flex align-items-center">
+                        <div>
+                            <h5 class="card-title-2">Master</h5>
+                            <p class="card-text-2">Master is a film where the stories moves by the Master.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h2 id="movieTitle">Master</h2>
+                    <p id="movieReview">A prisoner escapes, transforms lives, and seeks justice against corrupt politician.</p>
+
+                    <h6 class="text-center text-warning">Trailer</h6>
+                    <div id="carouselTrailerMaster" class="carousel slide mb-3" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/1_iUFT3nWHk?si=8a9-2ppIi-sBQutb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-item">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/UTiXQcrLlv4?si=s-UxsMxFgy-BC0Fl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselTrailermaster" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselTrailerMaster" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+
+                    <h6 class="text-center text-warning">Songs</h6>
+                    <div id="carouselSongsMaster" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/gjnrtCKZqYg?si=scNSlIUIClLtosot" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-item">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/vxzfsBDx590?si=2oeDIYYtwQ3XHNvX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselSongsMaster" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselSongsMaster" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="KaithiMovieDetails" style="display: none;">
+    <div class="container">
+        <button class="btn btn-warning my-3" onclick="goBack()">Back</button>
+        <div class="row mt-5">
+            <div class="card" style="width: 100%; display: flex;">
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <img src="D:/movies Buzz/img/Kaithi.jpg" alt="Movie Poster" class="img-fluid">
+                    
+                    <div class="col-md-6 d-flex align-items-center">
+                        <div>
+                            <h5 class="card-title-2">Kaithi</h5>
+                            <p class="card-text-2">Kaithi is a film where a Former suspect helps the cop to save their lives.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h2 id="movieTitle">Kaithi</h2>
+                    <p id="movieReview">A prisoner fights criminals overnight to save poisoned cops and daughter..</p>
+
+                    <h6 class="text-center text-warning">Trailer</h6>
+                    <div id="carouselTrailerKaithi" class="carousel slide mb-3" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/g79CvhHaj5I?si=gUsY2CDx70TSOx4g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-item">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/KPndTU16k7c?si=4q1NwN2l9ab44o-4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselTrailerKaithi" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselTrailerKaithi" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+
+                    <h6 class="text-center text-warning">Songs</h6>
+                    <div id="carouselSongsKaithi" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/LVk5C5EVl-U?si=Ompfo0WeH3R3CynG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-item">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/xW4QVV7hqL0?si=Le8M7_j5N6G0uH7C" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselSongsKaithi" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselSongsKaithi" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="VikramMovieDetails" style="display: none;">
+    <div class="container">
+        <button class="btn btn-warning my-3" onclick="goBack()">Back</button>
+        <div class="row mt-5">
+            <div class="card" style="width: 100%; display: flex;">
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <img src="D:\movies Buzz\img\Vikram-2.jpg" alt="Movie Poster" class="img-fluid">
+                    
+                    <div class="col-md-6 d-flex align-items-center">
+                        <div>
+                            <h5 class="card-title-2">Vikram</h5>
+                            <p class="card-text-2">Vikram is film in which a blacksqoud members trys to make a drug free society.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h2 id="movieTitle">Vikram</h2>
+                    <p id="movieReview">Agent battles masked drug lords to avenge son and expose syndicate.</p>
+
+                    <h6 class="text-center text-warning">Trailer</h6>
+                    <div id="carouselTrailerVikram" class="carousel slide mb-3" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/OKBMCL-frPU?si=WRCg7lVRBB29UTcp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-item">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/NXSigiaZ0W0?si=kSxmuhXuWz9dkJgF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselTrailerVikram" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselTrailerVikram" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+
+                    <h6 class="text-center text-warning">Songs</h6>
+                    <div id="carouselSongsVikram" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/1OjZnGZjOA0?si=1Vp5cipdeMi4qnU5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-item">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/3EBs73y5iik?si=CfCGoAIEX6uVN8Vb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselSongsVikram" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselSongsVikram" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="PettaMovieDetails" style="display: none;">
+    <div class="container">
+        <button class="btn btn-warning my-3" onclick="goBack()">Back</button>
+        <div class="row mt-5">
+            <div class="card" style="width: 100%; display: flex;">
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <img src="D:\movies Buzz\img\Petta.jpg" alt="Movie Poster" class="img-fluid">
+                    
+                    <div class="col-md-6 d-flex align-items-center">
+                        <div>
+                            <h5 class="card-title-2">Petta</h5>
+                            <p class="card-text-2">An Family entertaining story with action, drama, and nostalgia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h2 id="movieTitle">Petta</h2>
+                    <p id="movieReview">Warden seeks revenge on gangster, protecting his friend's hidden son.</p>
+
+                    <h6 class="text-center text-warning">Trailer</h6>
+                    <div id="carouselTrailerPetta" class="carousel slide mb-3" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/FCB0ZfQ9Rzs?si=rEYaZ6cgfNpNxhr5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-item">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/bbMLUadeMnA?si=vYFogcHp2xo_YA0V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselTrailerPetta" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselTrailerPetta" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+
+                    <h6 class="text-center text-warning">Songs</h6>
+                    <div id="carouselSongsPetta" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/88iypMO9H7g?si=JRx04RMKIrW9OTvs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            <div class="carousel-item">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/TKeU1bLlAcc?si=o7Xz4aZfeugHRN-l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselSongsPetta" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselSongsPetta" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+    <footer>
+        <p>&copy; 2024 Movies Buzz. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function showDetails(movieId) {
+            document.getElementById("recentMovies").style.display = "none";
+            document.getElementById(movieId + "MovieDetails").style.display = "block";
+        }
+    
+        function goBack() {
+            document.getElementById("BigilMovieDetails").style.display = "none";
+            document.getElementById("MersalMovieDetails").style.display = "none";
+            document.getElementById("JawanMovieDetails").style.display = "none";
+            document.getElementById("2.0MovieDetails").style.display = "none";
+            document.getElementById("MasterMovieDetails").style.display = "none";
+            document.getElementById("KaithiMovieDetails").style.display = "none";
+            document.getElementById("VikramMovieDetails").style.display = "none";
+            document.getElementById("PettaMovieDetails").style.display = "none";
+
+            document.getElementById("recentMovies").style.display = "block";
+        }
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
